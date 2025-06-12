@@ -1,0 +1,60 @@
+Problem : Basically, you are given a number 'N'. You need to display the sum of numbers that start from 1 to 'N'.
+
+Solution : It has two ways :
+                           1. Brute force
+                           2. Formula used approach
+
+
+1. Brute Force Approach :  You start adding the numbers from 1 to 'N' - for that you need to iterate the numbers and keep on adding until 'N'.
+
+    Code :
+
+    #include<iostream>
+    using namespace std;
+
+   int main() {
+       int N;
+       cin>>N;        // read input
+
+       int Sum = 0;   //intially sum is zero
+
+       for(int i=1;i<=N;i++) {
+             Sum += i;           // keep on adding upto N
+       }
+
+       cout<<Sum<<endl;
+       return 0;
+   }
+
+
+  Output :
+  7
+  28
+
+  Time complexity : O(N) , where N is input.  Here we traversing the numbers upto N.
+
+
+
+
+2. Formula Based Approach : Here we simply use the formula that exist for sum of numbers in earlier classes i.e n*(n+1)/2, so that there is no need of keep on adding numbers.
+
+Code :
+
+#include<iostream>
+using namespace std;
+
+int main() {
+       int N;
+       cin>>N;
+
+      int Sum = N*(N+1)/2;
+      cout<<Sum<<endl;
+      return 0;
+}
+
+Output :
+13
+91
+
+Time Complexity : O(1), which is far better than the previous one. Here we are getting the answer in constant time.
+
