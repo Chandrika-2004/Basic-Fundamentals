@@ -1,0 +1,49 @@
+Problem Statement:
+You will be given a string 's' . You have to find the maximum length of substring without duplicates..
+
+Explanation:
+We traverse through the string ,  and will take one empty set , we keep on adding the characters of string for every first occurrence to our empty set. 
+Check for maximum length at every time.
+If the character occures at second time , we will keep on deleting the elements in set, until the repeated character is deleted at its first occurrence.
+
+
+Brute Force Approach:
+Traverse through the string. generate the substrings, and we will check the length of substring without duplicates is equal to length of substring or not.
+If it equals, we can say that the substring doesn't contain any duplicates. WE update the maximum length
+
+Code:
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        n = len(s)
+        max_len = 0
+        
+        for i in range(n):
+            for j in range(i, n):
+                substring = s[i:j+1]
+                if len(set(substring))==len(substring):
+                    max_len = max(max_len, len(substring)
+        return maxlen            
+
+
+
+Optimal Approach:
+
+Code:
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        n = len(s)
+        maxlen = 0
+        seen = set()
+
+        i = 0
+
+        for j in range(n):
+            while s[j] in seen:
+                seen.remove(s[i])
+                i += 1
+            
+            seen.add(s[j])   
+            maxlen = max(maxlen,j-i+1)     
+        return maxlen
