@@ -1,0 +1,42 @@
+Problem Statement:
+Given an array , find the peak element in that array.
+An element is said to be peak element , if it greater than its left element and right element.
+In this question, there are some boundary conditions 
+     1. for your leftmost element , there is no left element, so assume that left elmenet is -infinity
+     2. for your rightmost element, there is no right element , so assume that right element is -infinity
+
+
+
+Brute Force Approach:
+Traverse through the entire array , check wheather the element is strictly greater than its neighbours or not.
+
+Code:
+
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        n = len(nums)
+        for i in range(n):
+            left_val = nums[i - 1] if i > 0 else float('-inf')
+            right_val = nums[i + 1] if i < n - 1 else float('-inf')
+            
+            if nums[i] > left_val and nums[i] > right_val:
+                return i
+
+
+Better Approach:
+Use a binary search method, calculate your mid value, if ur mid value is greater than its right element , so you check its left part. Otherwise check its right part.
+
+Code:
+
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        n = len(nums)
+        l,r = 0,n-1
+
+        while l<r:
+            mid = (l+r)//2
+            if nums[mid] > nums[mid+1]:
+                r = mid
+            else:
+                l = mid+1   
+        return l 
